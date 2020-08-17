@@ -1,0 +1,27 @@
+class Solution(object):
+    def findNumberIn2DArray(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        
+        #选左上角，往右走和往下走都增大，不能选
+        #选右下角，往左走和往上走都减小，不能选
+        #选左下角，往右走增大，往上走减小，可选
+        #选右上角，往左走减小，往下走增大，可选
+
+        height = len(matrix)
+        if height == 0:
+            return False
+        width = len(matrix[0])
+        row = 0
+        column = width - 1
+        while row < height and column >= 0:
+            if matrix[row][column] == target:
+                return True
+            elif matrix[row][column] > target:
+                column -= 1
+            else:
+                row += 1
+        return False
