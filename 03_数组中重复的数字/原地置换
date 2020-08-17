@@ -8,7 +8,8 @@ class Solution(object):
         for i, n in enumerate(nums):
             if n == i:
                 continue
-            new = nums[n]
-            if n == new:
-                return n
-            nums[i], nums[n] = new, n
+            check = nums[n]
+            if n == check:
+                return check
+            nums[i], nums[n] = check, n
+        return -1
